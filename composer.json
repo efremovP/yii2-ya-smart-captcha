@@ -27,5 +27,6 @@
     "psr-4": {
       "efremovP\\YaCaptcha\\": "src"
     }
-  }
+  },
+  "minimum-stability": "dev"
 }
