@@ -1,0 +1,33 @@
+{
+  "name": "efremovp/yii2-ya-smart-captcha",
+  "description": "Yandex Smart Captcha integration for Yii2",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "php",
+    "yandex",
+    "captcha",
+    "SmartCaptcha",
+    "smart captcha",
+    "yii"
+  ],
+  "authors": [
+    {
+      "name": "Peter",
+      "email": "peter.efremov@gmail.com",
+      "role": "Developer"
+    }
+  ],
+
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.1"
+  },
+  "require-dev": {
+  }, 
+  "autoload": {
+    "psr-4": {
+      "efremovP\\YaCaptcha\\": "src"
+    }
+  }
+}
