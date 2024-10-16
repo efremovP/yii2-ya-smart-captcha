@@ -1,12 +1,12 @@
 <?php
-$this->registerJsFile('https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&onload=smartCaptchaInit', ['async' => true, 'defer' => true]);
+$this->registerJsFile('https://smartcaptcha.yandexcloud.net/captcha.js?render=onload&onload=smartCaptchaInit' . $nameForm, ['async' => true, 'defer' => true]);
 ?>
 
 <?= $form->field($model, $fieldName, ['template' => "<div class=\"error\">{error}</div>\n{input}"])->hiddenInput()->label('') ?>
 <div id="captcha-container_<?= $nameForm ?>"></div>
 
 <script>
-	function smartCaptchaInit() {
+	function smartCaptchaInit<?= $nameForm ?>() {
 		if (!window.smartCaptcha) {
 			return;
 		}
