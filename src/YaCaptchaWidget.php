@@ -9,23 +9,34 @@ class YaCaptchaWidget extends Widget
     public $form;
     public $model;
     public $fieldName = 'yaCaptcha';
+    public $successCallback = null;
+    public $lang = 'ru';
+
+    private $formName;
+    private $clientKey;
+    private $inputId;
+
+    public function init()
+    {
+        $this->clientKey = Yii::$app->params['ya_captcha']['client_key'];
+
+        $parts = explode('\\', get_class($this->model));
+        $this->formName = strtolower(end($parts));
+
+        $this->inputId = $this->formName . '-' . strtolower($this->fieldName);
+    }
 
     public function run()
     {
-        $parts = explode('\\', get_class($this->model));
-        $formName = strtolower(end($parts));
-
-        $clientKey = Yii::$app->params['ya_captcha']['client_key'];
-
-        $inputId = $formName . '-' . strtolower($this->fieldName);
-
         return $this->render('ya-captcha', [
-            'clientKey' => $clientKey,
+            'clientKey' => $this->clientKey,
             'form' => $this->form,
             'model' => $this->model,
-            'nameForm' => $formName,
+            'nameForm' => $this->formName,
             'fieldName' => $this->fieldName,
-            'inputId' => $inputId,
+            'inputId' => $this->inputId,
+            'successCallback' => $this->successCallback,
+            'lang' => $this->lang,
         ]);
     }
 }

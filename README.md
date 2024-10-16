@@ -40,7 +40,7 @@ return [
 https://yandex.cloud/ru/docs/smartcaptcha/quickstart
 
 
-### Usage
+## Basic Usage
 
 Add widget to views
 ```
@@ -70,8 +70,29 @@ class LoginForm extends Model
     {
         return [
             // add captcha rules
-            ['yaCaptcha', 'required', 'message' => Yii::$app->params['ya_captcha']['error_message'],
+            ['yaCaptcha', 'required', 'message' => Yii::$app->params['ya_captcha']['error_message']],
             ['yaCaptcha', \efremovP\YaCaptcha\validators\YaCaptchaValidator::class],
         ];
     }
+```
+
+## Additional Functionality
+
+### Add callback function
+```
+<?= \efremovP\YaCaptcha\YaCaptchaWidget::widget(['form' => $form, 'model' => $model, 'successCallback' => 'successCaptchaCallback']) ?>
+
+
+<script>
+    function successCaptchaCallback() {
+        console.log('captcha is success');
+    };
+</script>
+
+```
+
+### Add language, (default ru)
+```
+<?= \efremovP\YaCaptcha\YaCaptchaWidget::widget(['form' => $form, 'model' => $model, 'lang' => 'en']) ?>
+
 ```
